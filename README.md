@@ -19,3 +19,12 @@ If you are attending
 please do the following:
 
 - complete instructions from Pre-req_set_up.md
+
+We will be using the `poweruser` branch for this session. 
+Clone the repository and switch to the proper branch by entering
+the following commands into your terminal window:
+
+```
+git clone https://github.com/eirianop/ResBaz2021_LaTeX.git
+git checkout poweruser
+```
