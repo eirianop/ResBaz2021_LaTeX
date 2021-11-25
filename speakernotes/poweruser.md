@@ -77,7 +77,7 @@ Move on to `getting started`, but go slowly, give enough time to catch up
     - git clone https://github.com/eirianop/ResBaz2021_LaTeX.git
     - (right click to paste URL)
     - `cd` into repo
-    - `git checkout localdev`
+    - `git checkout poweruser`
 - open code
     - (in Windows)
         - `code .`
