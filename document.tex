@@ -14,16 +14,49 @@
 \usepackage{subfiles}
 \usepackage{multicol}  
 
-
 % chapter style for Table of Contents
 % only impacts ToC because of eirianstyle.sty overrides chapter style elsewhere
 %\chapterstyle{bianchi}
 \chapterstyle{verville}
 
+% alternative, see 
+% https://tex.stackexchange.com/questions/107064/bibliographies-when-using-subfiles
+\usepackage{ifthen}
+\newboolean{printBibInSubfiles}
+\setboolean{printBibInSubfiles}{true} 
+\def\bib{\ifthenelse{\boolean{printBibInSubfiles}}
+        %{\bibliography{documentRef}} %natbib
+        {\printbibliography{}} %biblatex
+    }
 
 % bibtex
-%\bibliography{documentRef}
+\bibliography{documentRef}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Chapter Declarations                               %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% rename "chapter" to "whatever", if you like
+% may have to compile twice
+% https://tex.stackexchange.com/questions/13387/how-to-get-part-name-in-latex
+%
+%\renewcommand*{\chaptername}{Entry}
+
+% rename "part" to "week"
+%\renewcommand*{\partname}{Week}
+
+% reset counters for each part, if you want
+%\@addtoreset{section}{part}
+
+% getting "Week {N}: Foo" to show in ToC is a bit tricky:
+% (see: https://tex.stackexchange.com/questions/129592/add-parts-to-the-table-of-contents)
+% need to set length, or the part title gets overrun
+%
+%\newlength\mylen
+%\renewcommand\thepart{\arabic{part}}
+%\renewcommand\cftpartpresnum{Week~}
+%\settowidth\mylen{\bfseries\cftpartpresnum\cftpartaftersnum}
+%\addtolength\cftpartnumwidth{\mylen}
 
 
 
@@ -50,6 +83,7 @@
 %%%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\setboolean{printBibInSubfiles}{false}
 
 
 \pagenumbering{roman}
@@ -69,7 +103,7 @@
 %\subfile{pages/00_timelinetemplate.tex}
 \subfile{pages/00_pagetemplate.tex}
 \subfile{pages/00_listing_example.tex}
-\subfile{pages/00_minted_example.tex}
+%\subfile{pages/00_minted_example.tex}
 \subfile{pages/00_subcaption_example.tex}
 \subfile{pages/00_table_example.tex}
 
@@ -115,11 +149,11 @@
 \renewcommand*{\bibfont}{\footnotesize}
 
 % natbib
-\bibliography{documentRef}
-\bibliographystyle{plainnat}
+%\bibliography{documentRef}
+%\bibliographystyle{plainnat}
 
 % bibtex
-%\printbibliography{}
+\printbibliography{}
 
 
 \end{document}

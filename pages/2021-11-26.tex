@@ -1,0 +1,70 @@
+\documentclass[document.tex]{subfiles}
+\begin{document}
+
+\chapter{2021-11-26}
+
+\subsubsection{Description of some Dissimilarity Measures}
+Many measures incorporate relative abundance information, and the paper 
+focusses on extensions to the two measures below:
+\begin{itemize}
+    \item Jaccard dissimilarity:
+    \\$d_J = (b+c)/(a+b+c)$
+    \\where 
+    \begin{quote}
+        $a$ is the number of species shared
+        \\$b$ is the number of species in unit 1 that do not occur in unit 2
+        \\$c$ is the number of species in unit 2 that do not occur in unit 1
+    \end{quote}
+    \item S{\o}rensen measure, also described by Dice:
+    \\$d_S = (b+c)/(2a+b+c)$
+    \\ this is monotonically related to the Jaccard measure (with $d_S < d_J$)
+    \\ S{\o}rensen gives double value to shared species.
+    \item both of these are favoured in ecology because they exclude joint 
+    absences and can be interpreted in a probabilistic framework 
+    (Chao \textit{et al.} 2005)
+\end{itemize}
+
+Extensions:
+\begin{itemize}
+    \item Bray \& Curtis (1957):
+    \begin{itemize}
+        \item $d_{BC} = \frac{\sum_{k=1}^{p}|\chi{}_{1k}-\chi{}_{2k}|}{\sum_{k=1}^{p}(\chi{}_{1k}-\chi{}_{2k})}$
+        \item $\chi{}_{1k}$ is the abundance of species $k$ in sampling unit 1
+        \item $\chi{}_{2k}$ is the abundance of species $k$ in sampling unit 2
+        \item $p$ is the total number of species recorded across both units
+        \item if the variables differ in their scales, then a transformation of abundances (e.g.\ square roots or fourth roots) are often applied first
+    \end{itemize}
+
+    \item Gower (1971, 1987)
+    \begin{itemize}
+        \item $d_{G} = \frac{\sum_{k=1}^{p}|\chi{}_{1k}-\chi{}_{2k}|/R_k}{\sum_{k=1}^{p}w_k}$
+        \item $R_{k}$ is the range of the $k$th species 
+        \item $w_k$ is an optional weight that can be given to each species
+        \item dividing differences by the range (or std dev) is optional, 
+        the idea is to remove differences in scale among variables.
+    \end{itemize}
+
+    \item Jaccard measure (from Chao \textit{et al.} 2005)
+    \begin{itemize}
+        \item interpretable as the probability of two species, one 
+        drawn at random from each sample, will not be shared
+        \item $d_{ChJ} = 1 - UV/(U + V - UV)$
+        \item $U$ is the sum of the proportional abundances of species
+        in sampling unit 1 that are shared with unit 2
+        \item $V$ is the sum of the proportional abundances of 
+        species in sampling unit 2 that are shared with unit 1
+        \item $U = \sum_{k=1}^{p} w_k \frac{\chi{}_{1k}}{\chi{}_{1+}}$
+        \item where $\chi{}_{1+}$ is the sum of abundances for all species
+        in sampling unit 1 and $w_k=1$ if species $k$ occurs in both unit
+        1 and unit 2 (shared), otherwise $w_k$ = 0
+        \item $V$ is defined similarly, but for sampling unit 2.
+        \item $d_{ChJ}$ is interpretable as the probability that two
+        \textit{individuals} drawn at random from each sample, will not
+        belong to a shared species. It takes values from 0 to 1 and 
+
+        $d_{ChJ}=dJ$ for presence/absence data.
+    \end{itemize}
+\end{itemize}
+
+\bib{}
+\end{document}
