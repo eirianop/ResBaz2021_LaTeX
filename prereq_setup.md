@@ -24,7 +24,7 @@ First, set up Windows Subsystem for Linux
   - check that linux is installed using the Command Prompt:
   - `wsl --list`
   - if it's not, you can install, Ubuntu (or a distribution of your choice)
-  - `swl --install -d Ubuntu-20.04`
+  - `wsl --install -d Ubuntu-20.04`
   - follow the set up instructions and choose a username/password
 
 Install biber:
